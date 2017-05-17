@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as todosActions from '../../actions';
-import MyText from './MyText';
+import * as todosActions from '@src/actions';
+import MyText from './components/MyText';
+import styles from './index.style';
 
 class Home extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <MyText {...this.props}/>
       </View>
     );

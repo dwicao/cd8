@@ -1,6 +1,18 @@
 import * as types from '../actions/types';
+import uuid from 'uuid';
 
-const todosReducer = (state = [], action) => {
+const initialState = [
+  {
+    id: uuid.v4(),
+    text: 'Inisiasi Pertama'
+  },
+  {
+    id: uuid.v4(),
+    text: 'Inisiasi Kedua'
+  }
+];
+
+const todosReducer = (state = initialState, action) => {
   switch(action.type) {
     case types.ADD_TODO:
       return [
