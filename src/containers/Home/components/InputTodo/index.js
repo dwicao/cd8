@@ -1,33 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
   TextInput,
 } from 'react-native';
 import styles from './index.style';
 
-const InputTodo = (props) => {
-  const { actions } = props;
+class InputTodo extends Component {
+  constructor() {
+    super();
 
-  let tempText = '';
+    this.state = {
+      textValue: '',
+    };
 
-  const onChangeText = (text) => {
-    tempText = text;
+    this.onChangeText = this.onChangeText.bind(this);
+    this.onAddTodo = this.onAddTodo.bind(this);
+  }
+
+  onChangeText(text) {
+    this.setState({ textValue: text });
   };
 
-  const onAddTodo = () => {
-    actions.addTodo(tempText);
+  onAddTodo() {
+    if (this.state.textValue !== '') {
+      this.props.actions.addTodo(this.state.textValue);
+      this.setState({ textValue: '' });
+    }
   };
 
-  return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.textInput}
-        autoCorrect={false}
-        onChangeText={onChangeText}
-        onSubmitEditing={onAddTodo}
-      />
-    </View>
-  );
+  render () {
+    return (
+      <View style={styles.container}>
+        <TextInput
+          style={styles.textInput}
+          autoCorrect={false}
+          value={this.state.textValue}
+          onChangeText={this.onChangeText}
+          onSubmitEditing={this.onAddTodo}
+        />
+      </View>
+    );
+  }
 };
 
 export default InputTodo;
