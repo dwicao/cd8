@@ -4,11 +4,11 @@ import uuid from 'uuid';
 const initialState = [
   {
     id: uuid.v4(),
-    text: 'Inisiasi Pertama'
+    text: 'Todo Pertama'
   },
   {
     id: uuid.v4(),
-    text: 'Inisiasi Kedua'
+    text: 'Todo Kedua'
   }
 ];
 

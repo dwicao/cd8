@@ -1,8 +1,12 @@
 import * as types from './types';
+import uuid from 'uuid';
 
-export const addTodo = (payload) => ({
+export const addTodo = (text) => ({
   type: types.ADD_TODO,
-  payload,
+  payload: {
+    id: uuid.v4(),
+    text,
+  }
 });
 
 export const editTodo = (id, text) => ({
