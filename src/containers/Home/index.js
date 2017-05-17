@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as todosActions from '@src/actions';
 import MyText from './components/MyText';
+import InputTodo from './components/InputTodo';
 import styles from './index.style';
 
 class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <InputTodo {...this.props}/>
         <MyText {...this.props}/>
       </View>
     );
