@@ -6,27 +6,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import styles from './index.style';
+import ListTodo from './ListTodo';
 
 const MyText = (props) => {
-  const { actions } = props;
+  const { actions, todos } = props;
 
   const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-  const newDataSource = ds.cloneWithRows(props.todos);
+  const newDataSource = ds.cloneWithRows(todos);
 
-  const onDeleteTodo = id => actions.deleteTodo(id);
-
-  const renderRow = (todo) => {
-    return (
-      <View style={styles.row}>
-        <Text style={styles.text}>
-          {todo.text}
-        </Text>
-        <TouchableOpacity onPress={() => onDeleteTodo(todo.id)}>
-          <Text>{'\u2716'}</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+  const renderRow = todo => <ListTodo todo={todo} actions={actions}/>;
 
   return (
     <View style={styles.container}>
