@@ -27,6 +27,11 @@ const todosReducer = (state = initialState, action) => {
         return Object.assign({}, todo, { text: action.text });
       });
 
+    case types.DELETE_TODO:
+      return state.filter((todo) => {
+        return todo.id !== action.id;
+      });
+
     default:
       return state;
   }
